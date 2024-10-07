@@ -1,6 +1,6 @@
 ﻿syntax = "proto3";
 
-import  "google/protobuf/wrapper.proto";
+import  "google/protobuf/wrappers.proto";
 
 option csharp_namespace = "OnlineShopApi.GutscheinService.Contracts";
 
