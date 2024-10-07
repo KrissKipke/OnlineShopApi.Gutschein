@@ -1,0 +1,87 @@
+﻿syntax = "proto3";
+
+import  "google/protobuf/wrapper.proto";
+
+option csharp_namespace = "OnlineShopApi.GutscheinService.Contracts";
+
+package OnlineShopApi.GutscheinService;
+
+service GutscheinService{
+	rpc HoleAlleGutscheine (HoleAlleGutscheineRequest) returns (HoleAlleGutscheineResponse);
+
+	rpc HoleGutscheinMitId (HoleGutscheinMitIdRequest) returns (HoleGutscheinMitIdResponse);
+
+	rpc HoleGutscheinMitName (HoleGutscheinMitNameRequest) returns (HoleGutscheinMitNameResponse);
+
+	rpc GutscheinHinzufuegen (GutscheinHinzufuegenRequest) returns (GutscheinHinzufuegenResponse);
+
+	rpc GutscheinBearbeiten (GutscheinBearbeitenRequest) returns (GutscheinBearbeitenResponse);
+
+	rpc GutscheinLoeschen (GutscheinLoeschenRequest) returns (GutscheinLoeschenResponse);
+}
+
+message Gutschein {
+	int64 id = 1;
+	string codeName = 2;
+	string codeBeschreibung = 3;
+	int32 wert = 4;
+	int32 wiederverwendbarkeit = 5;
+	int32 verwendet = 6;
+	string einloesbarVon = 7;
+	string einloesbarBis = 8;
+}
+
+message HoleAlleGutscheineRequest {
+}
+
+message HoleAlleGutscheineResponse {
+	repeated Gutschein gutschein = 1;
+}
+
+message HoleGutscheinMitIdRequest {
+	int64 gutscheinId = 1;
+}
+
+message HoleGutscheinMitIdResponse {
+	Gutschein gutschein = 1;
+}
+
+message HoleGutscheinMitNameRequest {
+	string codeName = 1;
+}
+
+message HoleGutscheinMitNameResponse {
+	Gutschein gutschein = 1;
+}
+
+message GutscheinHinzufuegenRequest {
+	string codeName = 1;
+	string codeBeschreibung = 2;
+	int32 wert = 3;
+	int32 wiederverwendbarkeit = 4;
+	string einloesbarVon = 5;
+	string einloesbarBis = 6;
+}
+
+message GutscheinHinzufuegenResponse {
+}
+
+message GutscheinBearbeitenRequest {
+	string codeName = 1;
+	string codeBeschreibung = 2;
+	int32 wert = 3;
+	int32 wiederverwendbarkeit = 4;
+	string einloesbarVon = 5;
+	string einloesbarBis = 6;
+}
+
+message GutscheinBearbeitenResponse {
+	Gutschein gutschein = 1;
+}
+
+message GutscheinLoeschenRequest {
+	int64 gutscheinId = 1;
+}
+
+message GutscheinLoeschenResponse {
+}
